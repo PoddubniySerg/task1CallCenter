@@ -17,7 +17,10 @@ public class Operator {
             while (!Thread.currentThread().isInterrupted()) {
                 Thread.sleep(random.nextInt(MAX_TIME_CONNECTING_ABONENT + MIN_TIME_CONNECTING_ABONENT));
                 if (!this.incomingCalls.isEmpty()) {
-                    System.out.println(Thread.currentThread().getName() + " принял звонок от " + this.incomingCalls.poll());
+                    String incomingCall = this.incomingCalls.poll();
+                    if (incomingCall != null) {
+                        System.out.println(Thread.currentThread().getName() + " принял звонок от " + incomingCall);
+                    }
                 }
             }
         } catch (InterruptedException e) {
